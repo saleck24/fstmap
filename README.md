@@ -1,6 +1,6 @@
 # fstmap
 
-A new Flutter project.
+A Flutter-based mobile application designed to assist students and newcomers at the Faculty of Science and Technology in Nouakchott. The app helps users navigate the campus by searching for specific addresses using the search bar or exploring categories such as 'Rooms', 'Departments', 'Lecture Halls', and 'Administration'
 
 ## Getting Started
 
