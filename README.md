@@ -14,7 +14,7 @@ A Flutter-based mobile application designed to assist students and newcomers at 
    
 4. Import the Database:
    A) Create a new database in phpMyAdmin
-   B) Import the file 'FST_mysql.sql'into your newly created database
+   B) Import the file 'FST_mysql.sql' into your newly created database
    
 5. Configure the PHP Script:
    A) Open the file server_fst_bd.php'
