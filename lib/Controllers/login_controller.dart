@@ -32,7 +32,7 @@ class LoginController extends GetxController {
       isLoading.value = true;
 
       final response = await http.post(
-        Uri.parse('http://192.168.100.133/api_fstmap/server_fst_bd.php'),
+        Uri.parse('http://192.168.100.212/api_fstmap/server_fst_bd.php'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

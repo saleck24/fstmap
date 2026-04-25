@@ -27,8 +27,10 @@ class MapController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _requestLocationPermission();
-    _getAddressCategory();
+    Future.delayed(const Duration(seconds: 2), () {
+      _requestLocationPermission();
+      _getAddressCategory();
+    });
   }
 
   // Demande la permission d'accès à la localisation
@@ -55,7 +57,7 @@ class MapController extends GetxController {
     try {
       if (userPosition.value == null) {
         Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,
+          locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
         );
         userPosition.value = position;
       }
@@ -80,7 +82,7 @@ class MapController extends GetxController {
     } else {
       try {
         final response = await http.get(Uri.parse(
-            'http://192.168.100.133/api_fstmap/server_fst_bd.php?name=$addressName'));
+            'http://192.168.100.212/api_fstmap/server_fst_bd.php?name=$addressName'));
 
         if (response.statusCode == 200) {
           Map<String, dynamic> data = json.decode(response.body);
@@ -115,7 +117,7 @@ class MapController extends GetxController {
     try {
       final response = await http.get(
         Uri.parse(
-            'http://192.168.100.133/api_fstmap/server_fst_bd.php?partial=$partialAddress'),
+            'http://192.168.100.212/api_fstmap/server_fst_bd.php?partial=$partialAddress'),
       );
 
       if (response.statusCode == 200) {
@@ -186,7 +188,7 @@ class MapController extends GetxController {
   // Récupère les catégories d'adresses depuis le serveur.
   Future<void> _getAddressCategory() async {
     final response = await http.get(
-        Uri.parse('http://192.168.100.133/api_fstmap/server_fst_bd.php?name='));
+        Uri.parse('http://192.168.100.212/api_fstmap/server_fst_bd.php?name='));
     if (response.statusCode == 200) {
       List<Map<String, dynamic>> addresses =
       List<Map<String, dynamic>>.from(json.decode(response.body));
